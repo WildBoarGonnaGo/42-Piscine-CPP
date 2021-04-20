@@ -1,27 +1,42 @@
 #include "Phonebook.class.hpp"
+#include <limits>
 
-Phonebook::Phonebook(void)
+Phonebook	::Phonebook(void)
 {
 	this->noexit_var = 1;
 	return ;
 }
 
-Phonebook::~Phonebook(void)
+Phonebook	::~Phonebook(void)
 {
 	return ;
 }
 
-void	Phonebook::addContact(Phonebook *var)
+std::string	Phonebook::field[11]
+			= {	"first name: ",
+				"last name: ",
+				"nickname: ",
+				"login: ",
+				"postal adress: ",
+				"email adress: ",
+				"phone number: ",
+				"birthday date: ",
+				"favorite meal: ",
+				"underwear color: ",
+				"darkest secret: "
+			};
+
+void		Phonebook::addContact(Phonebook *var)
 {
 	if (Phonebook::_intr == 8)
 	{
-		std::cout << "ERROR: the phonebook is already full up"
+		std::cerr << "error: the phonebook is already full up"
 			<< std::endl;
 		return ;
 	}
 	for (int i = 0; i < 11; ++i)
 	{
-		std::cout << var->field[i];
+		std::cout << Phonebook::field[i];
 		std::getline(std::cin, var->contact_field[i]);
 	}
 	++Phonebook::_intr;
@@ -33,14 +48,15 @@ void		Phonebook::writeField(std::string str)
 	std::string temp;
 
 	temp = str;
-	if (temp.length() > 9)
+	if (temp.length() > 10)
 	{
 		temp.resize(9);
 		temp.append(".");
 	}
+	std::cout << '|';
+	std::cout << std::setw(10);
 	std::cout.setf(std::ios_base::right);
-	std::cout << std::setfill(' ') << std::setw(10);
-	std::cout << '|' << temp;
+	std::cout << temp;
 	return ;
 } 
 
@@ -61,24 +77,39 @@ void		Phonebook::getSearch(Phonebook *p_obj)
 		<< "+----------+----------+----------+----------+"
 		<< std::endl;
 	}
-	std::cout << "Input contact's index: ";
-	std::cin >> index;
+	while(1)
+	{
+		std::cout << "Input contact's index: ";
+		if (std::cin >> index)
+			break ;
+		else
+		{
+			std::cerr << "error: wrong data input, try again."
+			<< std::endl;
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>
+				::max(), '\n');
+		}
+	}
 	if (index < 1 || index > Phonebook::_intr)
-		std::cout << "ERROR: wrong index input" << std::endl;
+		std::cerr << "error: wrong index input" << std::endl;
 	else
 	{
 		for (int i = 0; i < 11; ++i)
 		{
 			std::cout << Phonebook::field[i];
-			std::cout << p_obj[index].contact_field[i] << std::endl;
+			std::cout << p_obj[index - 1].contact_field[i] << std::endl;
 		}
 	}
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits<std::streamsize>
+		::max(), '\n');
 	return ;
 }
 
 void	Phonebook::wrongFuncOutput(void)
 {
-	std::cout << "ERROR: wrong command request" << std::endl;
+	std::cerr << "error: wrong command request" << std::endl;
 	return ;
 }
 

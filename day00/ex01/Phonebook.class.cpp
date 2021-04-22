@@ -38,6 +38,18 @@ void		Phonebook::addContact(Phonebook *var)
 	{
 		std::cout << Phonebook::field[i];
 		std::getline(std::cin, var->contact_field[i]);
+		if (!i && !var->contact_field[i].compare(""))
+		{
+			std::cerr << "error: the first name must be entered, try again!"
+				<< std::endl;
+			--i;
+		}
+		if (i == 1 && !var->contact_field[i].compare(""))
+		{
+			std::cerr << "error: the last name must be entered, try again!"
+				<< std::endl;
+			--i;
+		}
 	}
 	var->_client_num = ++Phonebook::_intr;
 	return ;
@@ -87,12 +99,16 @@ void		Phonebook::getSearch(Phonebook *p_obj)
 		<< "+----------+----------+----------+----------+"
 		<< std::endl;
 	}
+	if (!Phonebook::_intr)
+	{
+		std::cout << "No data is inputed yet. Phonebook is empty!"
+			<< std::endl;
+		return ;
+	}
 	while(1)
 	{
 		std::cout << "Input contact's index: ";
-		if (std::cin >> index)
-			break ;
-		else
+		if (!(std::cin >> index))
 		{
 			std::cerr << "error: wrong data input, try again."
 			<< std::endl;
@@ -100,16 +116,15 @@ void		Phonebook::getSearch(Phonebook *p_obj)
 			std::cin.ignore(std::numeric_limits<std::streamsize>
 				::max(), '\n');
 		}
+		else if (index < 1 || index > Phonebook::_intr)
+			std::cerr << "error: wrong index input, try again." << std::endl;
+		else
+			break ;
 	}
-	if (index < 1 || index > Phonebook::_intr)
-		std::cerr << "error: wrong index input" << std::endl;
-	else
+	for (int i = 0; i < 11; ++i)
 	{
-		for (int i = 0; i < 11; ++i)
-		{
-			std::cout << Phonebook::field[i];
-			std::cout << p_obj[index - 1].contact_field[i] << std::endl;
-		}
+		std::cout << Phonebook::field[i];
+		std::cout << p_obj[index - 1].contact_field[i] << std::endl;
 	}
 	std::cin.clear();
 	std::cin.ignore(std::numeric_limits<std::streamsize>

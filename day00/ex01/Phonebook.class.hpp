@@ -13,7 +13,6 @@ class Phonebook
 		void 				addContact(Phonebook *var);
 		void				getSearch(Phonebook *p_obj);
 		void				phoneExit(void);
-		void				wrongFuncOutput(void);
 		void				exitInit(void);
 		int					noexit_var;
 	private:
@@ -21,6 +20,8 @@ class Phonebook
 		static int			_intr;
 		static std::string	field[11];
 		void				writeField(std::string str);
+		void				writeIndex(Phonebook var);
+		int 				_client_num;
 };
 
 #endif

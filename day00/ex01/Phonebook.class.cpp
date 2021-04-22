@@ -17,8 +17,8 @@ std::string	Phonebook::field[11]
 				"last name: ",
 				"nickname: ",
 				"login: ",
-				"postal adress: ",
-				"email adress: ",
+				"postal address: ",
+				"email address: ",
 				"phone number: ",
 				"birthday date: ",
 				"favorite meal: ",
@@ -39,7 +39,7 @@ void		Phonebook::addContact(Phonebook *var)
 		std::cout << Phonebook::field[i];
 		std::getline(std::cin, var->contact_field[i]);
 	}
-	++Phonebook::_intr;
+	var->_client_num = ++Phonebook::_intr;
 	return ;
 }
 
@@ -60,6 +60,15 @@ void		Phonebook::writeField(std::string str)
 	return ;
 } 
 
+void		Phonebook::writeIndex(Phonebook var)
+{
+	std::cout << '|';
+	std::cout << std::setw(10);
+	std::cout.setf(std::ios_base::right);
+	std::cout << var._client_num;
+	return ;
+} 
+
 void		Phonebook::getSearch(Phonebook *p_obj)
 {
 	int	index;
@@ -71,7 +80,8 @@ void		Phonebook::getSearch(Phonebook *p_obj)
 	
 	for (int i = 0; i < Phonebook::_intr; ++i)
 	{
-		for (int j = 0; j < 4; ++j)
+		this->writeIndex(p_obj[i]);
+		for (int j = 0; j < 3; ++j)
 			Phonebook::writeField(p_obj[i].contact_field[j]);
 		std::cout << '|' << std::endl
 		<< "+----------+----------+----------+----------+"
@@ -104,12 +114,6 @@ void		Phonebook::getSearch(Phonebook *p_obj)
 	std::cin.clear();
 	std::cin.ignore(std::numeric_limits<std::streamsize>
 		::max(), '\n');
-	return ;
-}
-
-void	Phonebook::wrongFuncOutput(void)
-{
-	std::cerr << "error: wrong command request" << std::endl;
 	return ;
 }
 

@@ -22,8 +22,6 @@ int main(void)
 			main.getSearch(clients);
 		else if (!cmd.compare("EXIT"))
 			main.exitInit();
-		else
-			main.wrongFuncOutput();
 	}
 	return (0);
 }

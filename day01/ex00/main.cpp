@@ -29,30 +29,35 @@ int main(void)
 	RainbowDash->ponyJump();
 	Twighlight->ponyJump();
 	FlutterShy->ponyJump();
+	std::cout << std::endl;
 
 	Rarity.ponyPlayBall();
 	AppleJack.ponyPlayBall();
 	RainbowDash->ponyPlayBall();
 	Twighlight->ponyPlayBall();
 	FlutterShy->ponyPlayBall();
+	std::cout << std::endl;
 
 	Rarity.ponyFeedEat();
 	AppleJack.ponyFeedEat();
 	RainbowDash->ponyFeedEat();
 	Twighlight->ponyFeedEat();
 	FlutterShy->ponyFeedEat();
+	std::cout << std::endl;
 
 	Rarity.ponyWalkRun();
 	AppleJack.ponyWalkRun();
 	RainbowDash->ponyWalkRun();
 	Twighlight->ponyWalkRun();
 	FlutterShy->ponyWalkRun();
+	std::cout << std::endl;
 
 	Rarity.ponyFly();
 	AppleJack.ponyFly();
 	RainbowDash->ponyFly();
 	Twighlight->ponyFly();
 	FlutterShy->ponyFly();
+	std::cout << std::endl;
 
 	delete RainbowDash;
 	delete FlutterShy;

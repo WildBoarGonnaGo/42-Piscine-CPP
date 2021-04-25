@@ -1,16 +1,22 @@
 #ifndef ZOMBIEEVENT_HPP
 # define ZOMBIEEVENT_HPP
+# include "Zombie.hpp"
 
-#include <iostream>
-#include <string>
-#include "Zombie.hpp"
+# define POOL_NAME_SIZE 50
 
 class ZombieEvent
 {
-	Zombie	*setZombieType(std::string type)
-	{
-		Zombie	
-	}
-}
+	public:
+		ZombieEvent(void);
+		~ZombieEvent(void);
+		Zombie				*newZombie(std::string name);
+		void				setZombieType(std::string type);
+		Zombie				*randomChump();
+		void				zombieDead(Zombie *ptr);
+	private:
+		std::string			_name;
+		std::string			_type;
+		static std::string	_poolNames[POOL_NAME_SIZE];
+};
 
 #endif

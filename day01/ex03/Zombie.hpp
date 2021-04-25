@@ -10,7 +10,7 @@ class Zombie
 		~Zombie();
 		std::string			type;
 		std::string			name;
-		void				announce(void);	
+		void				announce(void);
 };
 
 #endif

@@ -1,0 +1,8 @@
+"Protoss Commander, I am Admiral Alexei Stukov of the United Earth Directorate. 
+We are here to take control of the Terran Dominion and all of its outlying colonies.
+You are in direct violation of Terran space and have openly attacked Terran troops. 
+Lower your shields and power down your weapons systems.
+The UED will be taking custody of your ships and whatever spoils you have garnered from
+this planet."
+
+- Stukov confronts the protoss over Braxis' space platform

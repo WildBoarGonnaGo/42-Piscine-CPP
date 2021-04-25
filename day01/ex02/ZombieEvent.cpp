@@ -42,13 +42,8 @@ Zombie		*ZombieEvent::randomChump()
 
 	some_zombie = rand() % POOL_NAME_SIZE;
 	randZombie = this->newZombie(ZombieEvent::_poolNames[some_zombie]);
+	randZombie->announce();
 	return (randZombie);
-}
-
-void 		ZombieEvent::zombieDead(Zombie *ptr)
-{
-	if (ptr)
-		delete ptr;
 }
 
 std::string	ZombieEvent::_poolNames[POOL_NAME_SIZE] = {

@@ -7,10 +7,10 @@ class Human
 	public:
 		Human();
 		~Human();
-		std::string	identify();
-		Brain		&getBrain();
+		std::string	identify() const;
+		Brain const	&getBrain();
 	private:
-		Brain		_mouse;
+		Brain const	_mouse;
 };
 
 #endif

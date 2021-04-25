@@ -7,7 +7,7 @@ Brain::Brain( ) { }
 
 Brain::~Brain ( ) { }
 
-std::string	Brain::identify()
+std::string	Brain::identify() const
 {
 	std::stringstream	iostr;
 	std::string			res;

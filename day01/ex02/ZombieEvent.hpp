@@ -12,11 +12,10 @@ class ZombieEvent
 		Zombie				*newZombie(std::string name);
 		void				setZombieType(std::string type);
 		Zombie				*randomChump();
-		void				zombieDead(Zombie *ptr);
 	private:
 		std::string			_name;
 		std::string			_type;
 		static std::string	_poolNames[POOL_NAME_SIZE];
 };
 
-#endif
+#endif 

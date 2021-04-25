@@ -6,5 +6,6 @@ void	errEmptyStr(std::string str)
 	{
 		std::cout << "replace: error: one the arguments - "
 			<< "is empty string." << std::endl; 
+		exit (1);
 	}
 }

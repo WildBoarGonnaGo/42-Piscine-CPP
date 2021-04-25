@@ -6,12 +6,12 @@ Human::Human( ) { }
 
 Human::~Human( ) { }
 
-std::string	Human::identify( )
+std::string	Human::identify( ) const
 {
 	return (this->_mouse.identify());
 }
 
-Brain		&Human::getBrain()
+Brain const	&Human::getBrain()
 {
 	return (this->_mouse);
 }

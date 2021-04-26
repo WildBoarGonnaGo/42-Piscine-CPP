@@ -54,7 +54,7 @@ class Integer
 		Integer(int const n);
 		~Integer(void);
 
-		int	getValue(void);
+		int	getValue(void) const;
 
 		/*
 		The line below returns the reference to the
@@ -63,18 +63,19 @@ class Integer
 
 		a = b = c = d
 		
-		Operation is proceeding from the left to
-		the right (c = d, then b = c and the a = b)
+		Operation is proceeding from the right to
+		the left (c = d, then b = c and the a = b)
 		and actually in return reference to the object
 		*/
-		Integer	&operator=( Integer const &rhs);
+		Integer	&operator=(Integer const &rhs);
 		/*The '+' operator is diffrent, because the current instance
-		doesn't change*/
-		Integer operator+( Integer const &rhs) const ;
+		doesn't change. The operation is proceeding from the right
+		to the left*/
+		Integer operator+(Integer const &rhs) const ;
 	private:
 		int _n;
 };
 
-std::ostream	operator<<(std::ostream &o, Integer const &rhs);
+std::ostream	&operator<<(std::ostream &o, Integer const &rhs);
 
 #endif

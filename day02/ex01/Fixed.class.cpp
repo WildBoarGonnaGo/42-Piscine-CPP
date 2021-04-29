@@ -1,5 +1,8 @@
 #include "Fixed.class.hpp"
 #include <iostream>
+#include <cmath>
+
+#define EPSILON 0.5e-2
 
 Fixed::Fixed( ) : _fixedPoint(0)
 {
@@ -18,20 +21,15 @@ Fixed::Fixed(Fixed const &refInst)
 Fixed	&Fixed::operator=(Fixed const &reInst)
 {
 	std::cout << "Assignation operator called" << std::endl;
-	this->_fixedPoint = reInst.getRawBits();
+	this->_fixedPoint = reInst._fixedPoint;
 	return (*this);
 }
 
-void	Fixed::setRawBits(int const reFixed)
+Fixed::Fixed(int const intfixNum)
 {
-	this->_fixedPoint = reFixed;
+	std::cout << "Int constructor called" << std::endl;
+	this->_fixedPoint = (intfixNum << this->_fractBit);
 	return ;
-}
-
-int		Fixed::getRawBits(void) const
-{
-	std::cout << "getRawBits member function called" << std::endl;
-	return (this->_fixedPoint);
 }
 
 Fixed::~Fixed( )
@@ -39,4 +37,63 @@ Fixed::~Fixed( )
 	std::cout << "Destructor called" << std::endl;
 }
 
-int const	Fixed::_fractBit = 8;
+Fixed::Fixed(float const floatfixNum)
+{
+	float	floatTemp;
+	float	fract = 1.0;
+	float	res = 0;
+
+	floatTemp = floatfixNum - roundf(floatfixNum);
+	this->_fixedPoint = int(roundf(floatfixNum));
+	this->_fixedPoint <<= _fractBit;
+	std::cout << "Float constructor called" << std::endl;
+	for (int i = 0; i < this->_fractBit; ++i)
+	{
+		fract *= 0.5;
+		this->_fixedPoint |= ((res + fract <= floatTemp + EPSILON)
+			<< (this->_fractBit - 1 - i));
+		res += fract * (res + fract <= floatTemp + EPSILON);
+	}
+	return ;
+}
+
+void			Fixed::setRawBits(int const reFixed)
+{
+	this->_fixedPoint = reFixed;
+	return ;
+}
+
+int				Fixed::getRawBits(void) const
+{
+	std::cout << "getRawBits member function called" << std::endl;
+	return (this->_fixedPoint);
+}
+
+int				Fixed::toInt(void) const
+{
+	return ((this->_fixedPoint >> this->_fractBit));
+}
+
+float			Fixed::toFloat(void) const
+{
+	float	res = 0;
+	float	fract = 1.0;
+
+	for (int i = 0; i < this->_fractBit; ++i)
+	{
+		fract *= 0.5;
+		if ((this->_fixedPoint >> (this->_fractBit - 1 - i)) & 1)
+			res += fract;
+	}
+	res += (this->_fixedPoint >> this->_fractBit);
+	return (res);
+}
+
+std::ostream	&operator<<(std::ostream &o,
+					Fixed const &objFloat)
+{
+	o << objFloat.toFloat();
+	return (o);
+}
+
+int const		Fixed::_fractBit = 8;

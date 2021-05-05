@@ -7,8 +7,8 @@ typedef unsigned int	uint32;
 class FragTrap
 {
 	public:
-		FragTrap();
-		FragTrap(std::string const name);
+		FragTrap( );
+		FragTrap(std::string const &name);
 		FragTrap(FragTrap const &target);
 		~FragTrap();
 		void				rangedAttack(std::string const &target);
@@ -19,14 +19,16 @@ class FragTrap
 		void				trgtFragAtck(FragTrap &target);
 		int					getFragTrapLvl();
 		int					getFragTrapHP();
-	private:
+		void				setFragTrapName(std::string const &name);
+		std::string			getFragTrapName();
+	protected:
 		std::string 		trapPrefix(FragTrap const &target);
 		int					_hitPoints;
 		int					_maxHitPoints;
 		int					_energyPoints;
 		int					_maxEnergyPoints;
 		int					_level;
-		std::string const	_name;
+		std::string			_name;
 		int					_meleeAtckDmg;
 		int					_rangedAtckDmg;
 		int					_vaultHunterDmg;

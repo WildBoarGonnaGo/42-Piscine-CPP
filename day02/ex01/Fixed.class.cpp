@@ -43,7 +43,7 @@ Fixed::Fixed(float const floatfixNum)
 	float	fract = 1.0;
 	float	res = 0;
 
-	floatTemp = floatfixNum - roundf(floatfixNum);
+	floatTemp = (floatfixNum - roundf(floatfixNum));
 	this->_fixedPoint = int(roundf(floatfixNum));
 	this->_fixedPoint <<= _fractBit;
 	std::cout << "Float constructor called" << std::endl;

@@ -4,15 +4,12 @@
 #include <typeinfo>
 #include <cctype>
 
-FragTrap::FragTrap() : _hitPoints(100),
+FragTrap::FragTrap( ) : _hitPoints(100),
 	_maxHitPoints(100), _energyPoints(100), _maxEnergyPoints(100),
 	_level(1), _meleeAtckDmg(30), _rangedAtckDmg(20),
-	_vaultHunterDmg(40), _armorDmgReduc(5)
-{ 
-	return ;
-}
+	_vaultHunterDmg(40), _armorDmgReduc(5) { }
 
-FragTrap::FragTrap(std::string const name) : _hitPoints(100),
+FragTrap::FragTrap(std::string const &name) : _hitPoints(100),
 	_maxHitPoints(100), _energyPoints(100), _maxEnergyPoints(100),
 	_level(1), _name(name), _meleeAtckDmg(30), _rangedAtckDmg(20),
 	_vaultHunterDmg(40), _armorDmgReduc(5) 
@@ -209,6 +206,16 @@ std::string	FragTrap::trapPrefix(FragTrap const &target)
 	res.resize(2);
 	res[1] = toupper(res[1]);
 	return (res);
+}
+
+void	FragTrap::setFragTrapName(std::string const &name)
+{
+	this->_name = name;
+}
+
+std::string	FragTrap::getFragTrapName()
+{
+	return (this->_name);
 }
 
 FragTrap::~FragTrap()

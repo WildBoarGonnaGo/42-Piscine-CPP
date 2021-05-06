@@ -5,6 +5,7 @@
 
 int main(void)
 {
+	srand(time(NULL));
 	std::cout << "Tom & Jerry, bravefull mouse and сunning cat have " << std::endl;
 	std::cout << "long lived together hating each other!" << std::endl;
 	std::cout << "They can't kill each other (this program is not yet another "
@@ -35,6 +36,9 @@ int main(void)
 	tom.vaulthunter_dot_exe("Jerry");
 	jerry.takeDamage(40);
 	tom.beRepaired(50);
+	tom.beRepaired(20);
+	tom.meleeAttack("Jerry");
+	jerry.takeDamage(30);
 	std::cout << std::endl << "Well ... maybe Jerry is brave, but " << std::endl;
 	std::cout << "Tom has been playing \"Naruto Shippuden: Ultimate Ninja Storm 3\""
 		<< std::endl;

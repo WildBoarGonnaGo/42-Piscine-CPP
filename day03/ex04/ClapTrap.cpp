@@ -34,7 +34,7 @@ void	ClapTrap::rangedAttack(std::string const &target)
 		<< this->_hitPoints << '/' << this->_maxHitPoints <<
 		" HP " << this->_energyPoints << '/' << this->_maxEnergyPoints
 		<< " EP " << this->_level << " LvL): attacks " << target
-		<< " with his fists " << this->_rangedAtckDmg
+		<< " at range, causing " << this->_rangedAtckDmg
 		<< " points of damage!" << std::endl;
 	std::cout << "CL4P-TP " << this->_name << " ("
 		<< this->_hitPoints << '/' << this->_maxHitPoints <<
@@ -56,7 +56,7 @@ void	ClapTrap::meleeAttack(std::string const &target)
 		<< this->_hitPoints << '/' << this->_maxHitPoints <<
 		" HP " << this->_energyPoints << '/' << this->_maxEnergyPoints
 		<< " EP " << this->_level << " LvL): attacks " << target
-		<< " with his fists " << this->_meleeAtckDmg
+		<< " with his fists, dealing " << this->_meleeAtckDmg
 		<< " points of damage!" << std::endl;
 	std::cout << "CL4P-TP " << this->_name << " ("
 		<< this->_hitPoints << '/' << this->_maxHitPoints <<
@@ -109,6 +109,12 @@ void	ClapTrap::beRepaired(unsigned int amount)
 {
 	unsigned int	realHeal;
 
+	if (this->_hitPoints == this->_maxHitPoints)
+	{
+		std::cout << "CL4P-TP " << this->_name << " already has a full HP!"
+			<< std::endl;
+		return ;
+	}
 	realHeal = (this->_hitPoints + (int)amount > this->_maxHitPoints) ?
 		this->_maxHitPoints - this->_hitPoints : amount;
 	std::cout << "CL4P-TP " << this->_name << " ("

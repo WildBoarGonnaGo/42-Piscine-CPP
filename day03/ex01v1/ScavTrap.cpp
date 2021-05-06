@@ -25,7 +25,7 @@ void	ScavTrap::rangedAttack(std::string const &target)
 	std::cout << "SC4V-TP " << this->_name << " ("
 		<< this->_hitPoints << '/' << this->_maxHitPoints
 		<< " HP " << this->_energyPoints << '/' << this->_maxEnergyPoints
-		<< " EP) attacks " << target << " at range causing " << this->_rangedAtckDmg
+		<< " EP) attacks " << target << " at range, causing " << this->_rangedAtckDmg
 		<< " points of damage!" << std::endl;
 	std::cout << "SC4G-TP " << this->_name << " ("
 		<< this->_hitPoints << '/' << this->_maxHitPoints
@@ -46,7 +46,7 @@ void	ScavTrap::meleeAttack(std::string const &target)
 	std::cout << "SC4V-TP " << this->_name << " ("
 		<< this->_hitPoints << '/' << this->_maxHitPoints
 		<< " HP " << this->_energyPoints << '/' << this->_maxEnergyPoints
-		<< " EP) attacks " << target << " with his fists " << this->_meleeAtckDmg
+		<< " EP) attacks " << target << " with his fists, dealing " << this->_meleeAtckDmg
 		<< " points of damage!" << std::endl;
 	std::cout << "SC4G-TP " << this->_name << " ("
 		<< this->_hitPoints << '/' << this->_maxHitPoints << " HP "
@@ -89,7 +89,7 @@ void	ScavTrap::takeDamage(unsigned int amount)
 		std::cout << "SC4V-TP " << this->_name << " (" <<
 			this->_hitPoints << '/' << this->_maxHitPoints << " HP "
 			<< this->_energyPoints << '/' << this->_maxEnergyPoints
-			<< " EP): \"You've broke my heart, scuvbag!\"."
+			<< " EP): \"You've broken my heart, scuvbag!\"."
 			<< std::endl;
 	}
 }
@@ -98,6 +98,12 @@ void	ScavTrap::beRepaired(unsigned int amount)
 {
 	unsigned int	realHeal;
 
+	if (this->_hitPoints == this->_maxHitPoints)
+	{
+		std::cout << "SC4V-TP " << this->_name << " already has a full HP!"
+			<< std::endl;
+		return ;
+	}
 	realHeal = (this->_hitPoints + (int)amount > this->_maxHitPoints) ?
 		this->_maxHitPoints - this->_hitPoints : amount;
 	std::cout << "SC4V-TP " << this->_name << " (" << this->_hitPoints
@@ -125,10 +131,19 @@ void	ScavTrap::challengeNewcomer()
 	};
 	int			num = rand() % 6;
 
+	if (this->_energyPoints)
+	{
+		std::cout << "SC4V-TP " << this->_name << " (" << this->_hitPoints
+			<< '/' << this->_maxHitPoints << " HP " << this->_energyPoints
+			<< '/' << this->_maxEnergyPoints << " EP): \"Here's a new challenge for ya!"
+			<< std::endl << chlngAnnounce[num] << '"' << std::endl;
+		this->_energyPoints -= 25;
+		return ;
+	}
 	std::cout << "SC4V-TP " << this->_name << " (" << this->_hitPoints
 		<< '/' << this->_maxHitPoints << " HP " << this->_energyPoints
-		<< '/' << this->_maxEnergyPoints << " EP): \"Here's a new challenge for ya!"
-		<< std::endl << chlngAnnounce[num] << '"' << std::endl;
+		<< '/' << this->_maxEnergyPoints << " EP): \"Oops! There will no challenge "
+		<< "today! Uhm ... well ... Sayonara amigos!" << std::endl;
 }
 
 ScavTrap::~ScavTrap()

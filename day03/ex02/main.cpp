@@ -44,5 +44,7 @@ int main(void)
 		red.meleeAttack("Arthur Burbridge");
 		arthur.takeDamage(30);
 	}
+	red.beRepaired(100);
+	red.beRepaired(20);
 	return (0);
 }

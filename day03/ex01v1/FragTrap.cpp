@@ -14,6 +14,7 @@ FragTrap::FragTrap(std::string const name) : _hitPoints(100),
 
 void	FragTrap::meleeAttack(std::string const &target)
 {
+
 	if (!this->_hitPoints)
 	{
 		std::cout << "FR4G-TP " << this->_name << " can't attack, he is broken."
@@ -23,7 +24,7 @@ void	FragTrap::meleeAttack(std::string const &target)
 	std::cout << "FR4G-TP " << this->_name << " ("
 		<< this->_hitPoints << '/' << this->_maxHitPoints
 		<< " HP " << this->_energyPoints << '/' << this->_maxEnergyPoints
-		<< " EP) attacks " << target << " at range causing " << this->_meleeAtckDmg
+		<< " EP) attacks " << target << " with his fists, dealing " << this->_meleeAtckDmg
 		<< " points of damage!" << std::endl;
 	std::cout << "FR4G-TP " << this->_name << " ("
 		<< this->_hitPoints << '/' << this->_maxHitPoints
@@ -43,7 +44,7 @@ void	FragTrap::rangedAttack(std::string const &target)
 	std::cout << "FR4G-TP " << this->_name << " ("
 		<< this->_hitPoints << '/' << this->_maxHitPoints
 		<< " HP " << this->_energyPoints << '/' << this->_maxEnergyPoints
-		<< " EP) attacks " << target << " with his fists " << this->_rangedAtckDmg
+		<< " EP) attacks " << target << " at range, causing " << this->_rangedAtckDmg
 		<< " points of damage!" << std::endl;
 	std::cout << "FR4G-TP " << this->_name << " ("
 		<< this->_hitPoints << '/' << this->_maxHitPoints << " HP "
@@ -95,6 +96,14 @@ void	FragTrap::beRepaired(unsigned int amount)
 {
 	unsigned int	realHeal;
 
+	if (this->_hitPoints == this->_maxHitPoints)
+	{
+		std::cout << "FR4G-TP " << this->_name << " (" << this->_hitPoints
+		<< '/' << this->_maxHitPoints << " HP " << this->_energyPoints
+		<< '/' << this->_maxEnergyPoints << " EP) already has full HP"
+		<< std::endl;
+		return ;
+	}
 	realHeal = (this->_hitPoints + (int)amount > this->_maxHitPoints) ?
 		this->_maxHitPoints - this->_hitPoints : amount;
 	std::cout << "FR4G-TP " << this->_name << " (" << this->_hitPoints

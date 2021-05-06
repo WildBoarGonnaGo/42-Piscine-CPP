@@ -35,10 +35,20 @@ void	ScavTrap::challengeNewcomer()
 		"The thing is more terrible than I can describe - an incoherent jumble of organ, sinew and bone. [Undescribable flesh swarn the floor]" 
 	};
 	int			num = rand() % 6;
+
+	if (this->_energyPoints)
+	{
+		std::cout << "SC4V-TP " << this->_name << " (" << this->_hitPoints
+			<< '/' << this->_maxHitPoints << " HP " << this->_energyPoints
+			<< '/' << this->_maxEnergyPoints << " EP): \"Here's a new challenge for ya!"
+			<< std::endl << chlngAnnounce[num] << '"' << std::endl;
+		this->_energyPoints -= 25;
+		return ;
+	}
 	std::cout << "SC4V-TP " << this->_name << " (" << this->_hitPoints
 		<< '/' << this->_maxHitPoints << " HP " << this->_energyPoints
-		<< '/' << this->_maxEnergyPoints << " EP): \"Here's a new challenge for ya!"
-		<< std::endl << chlngAnnounce[num] << '"' << std::endl;
+		<< '/' << this->_maxEnergyPoints << " EP): \"Oops! There will no challenge "
+		<< "today! Uhm ... well ... Sayonara amigos!" << std::endl;
 }
 
 ScavTrap::~ScavTrap()

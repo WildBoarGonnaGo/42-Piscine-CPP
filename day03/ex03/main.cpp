@@ -24,9 +24,15 @@ int main(void)
 	naruto.ninjaShoebox(terminator);
 	terminator.takeDamage(120);
 	naruto.ninjaShoebox(jim);
+	naruto.meleeAttack("Jim Reynor");
+	jim.takeDamage(60);
+	naruto.rangedAttack("Jim Reynor");
+	jim.takeDamage(5);
 	jim.vaulthunter_dot_exe("Naruto");
 	naruto.takeDamage(40);
-	jim.vaulthunter_dot_exe("Naruto");
-	naruto.takeDamage(40);
+	jim.meleeAttack("Naruto");
+	naruto.takeDamage(30);
+	jim.rangedAttack("Naruto");
+	naruto.takeDamage(20);
 	return (0);
 }

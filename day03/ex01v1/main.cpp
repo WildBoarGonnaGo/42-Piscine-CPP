@@ -43,5 +43,9 @@ int main(void)
 	narrator.challengeNewcomer();
 	std::cout << "Joseph's fate has been sealed..." << std::endl;
 	joseph.takeDamage(150);
+	narrator.meleeAttack("Joseph");
+	joseph.takeDamage(20);
+	joseph.beRepaired(120);
+	joseph.beRepaired(20);
 	return (0);
 }

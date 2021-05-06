@@ -3,12 +3,29 @@
 #include <string>
 #include <cstdlib>
 
+NinjaTrap::NinjaTrap()
+{
+	this->_hitPoints = 60;
+	this->_maxHitPoints = 60;
+	this->_energyPoints = 120;
+	this->_maxEnergyPoints = 120;
+	this->_meleeAtckDmg = 60;
+	this->_rangedAtckDmg = 5;
+	this->_armorDmgReduc = 0;
+	
+	std::cout << "CL4P-TP [Initializing name] (LvL "
+		<< this->_level << ") partially modified with NINJ4-TP options"
+		<< std::endl;
+	return ;
+}
+
 NinjaTrap::NinjaTrap(std::string const name) 
 {
 	this->_hitPoints = 60;
 	this->_maxHitPoints = 60;
 	this->_energyPoints = 120;
 	this->_maxEnergyPoints = 120;
+	this->_level = 1;
 	this->_name = name;
 	this->_meleeAtckDmg = 60;
 	this->_rangedAtckDmg = 5;
@@ -32,9 +49,9 @@ void	NinjaTrap::ninjaShoebox(FragTrap &prey)
 		<< this->_hitPoints << '/' << this->_maxHitPoints <<
 		" HP " << this->_energyPoints << '/' << this->_maxEnergyPoints
 		<< " EP " << this->_level << " LvL) attack stupid FR4G-TP" << std::endl;
-	std::cout << prey._name << " (" << prey._hitPoints << '/' << prey._maxHitPoints <<
-		" HP " << prey._energyPoints << '/' << prey._maxEnergyPoints
-		<< " EP " << prey._level << " LvL) from behind, ";
+	std::cout << prey.getName() << " (" << prey.getHitPoints() << '/'
+		<< prey.getMaxHitPoints() << " HP " << prey.getEnergyPoints() << '/'
+		<< prey.getMaxEnergyPoints() << " EP " << prey.getLevel() << " LvL) from behind, ";
 	if (this->_energyPoints >= 25)
 	{
 		this->_energyPoints -= 25;
@@ -45,6 +62,7 @@ void	NinjaTrap::ninjaShoebox(FragTrap &prey)
 			" HP " << this->_energyPoints << '/' << this->_maxEnergyPoints
 			<< " EP " << this->_level << " LvL): \"You mere armor and ranged weapon " 
 			<< "won't save you from ninja skills\"" << std::endl;
+		prey.takeDamage(120);
 	}
 	else
 	{
@@ -64,9 +82,10 @@ void	NinjaTrap::ninjaShoebox(ScavTrap &prey)
 		<< this->_hitPoints << '/' << this->_maxHitPoints <<
 		" HP " << this->_energyPoints << '/' << this->_maxEnergyPoints
 		<< " EP " << this->_level << " LvL) attack a extremly weak SC4V-TP" << std::endl;
-	std::cout << prey._name << " (" << prey._hitPoints << '/' << prey._maxHitPoints <<
-		" HP " << prey._energyPoints << '/' << prey._maxEnergyPoints
-		<< " EP " << prey._level << " LvL) from behind, ";
+	std::cout << prey.getName() << " (" << prey.getHitPoints() << '/'
+		<< prey.getMaxHitPoints() << " HP " << prey.getEnergyPoints() << '/'
+		<< prey.getMaxEnergyPoints() << " EP " << prey.getLevel()
+		<< " LvL) from behind, ";
 	if (this->_energyPoints >= 25)
 	{
 		this->_energyPoints -= 25;
@@ -79,6 +98,7 @@ void	NinjaTrap::ninjaShoebox(ScavTrap &prey)
 			<< std::endl
 			<< "Your challenges are just stupid references to Darkest Dungeon\""
 			<< std::endl;
+		prey.takeDamage(120);
 	}
 	else
 	{
@@ -99,9 +119,10 @@ void	NinjaTrap::ninjaShoebox(NinjaTrap &prey)
 		" HP " << this->_energyPoints << '/' << this->_maxEnergyPoints
 		<< " EP " << this->_level << " LvL) attack a unhonorable shinobi NINJ4-TP"
 		<< std::endl;
-	std::cout << prey._name << " (" << prey._hitPoints << '/' << prey._maxHitPoints <<
-		" HP " << prey._energyPoints << '/' << prey._maxEnergyPoints
-		<< " EP " << prey._level << " LvL) calling him for duel, ";
+	std::cout << prey.getName() << " (" << prey.getHitPoints() << '/'
+		<< prey.getMaxHitPoints() << " HP " << prey.getEnergyPoints()
+		<< '/' << prey.getMaxEnergyPoints()
+		<< " EP " << prey.getLevel() << " LvL) calling him for duel, ";
 	if (this->_energyPoints >= 25)
 	{
 		this->_energyPoints -= 25;
@@ -112,6 +133,7 @@ void	NinjaTrap::ninjaShoebox(NinjaTrap &prey)
 			" HP " << this->_energyPoints << '/' << this->_maxEnergyPoints
 			<< " EP " << this->_level << " LvL): \"Omae wa mou shindeiru..."
 			<< std::endl;
+		prey.takeDamage(60);
 	}
 	else
 	{

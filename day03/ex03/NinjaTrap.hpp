@@ -3,9 +3,10 @@
 # include "FragTrap.hpp"
 # include "ScavTrap.hpp"
 
-class NinjaTrap : public ClapTrap
+class NinjaTrap : public virtual ClapTrap
 {
 	public:
+		NinjaTrap();
 		NinjaTrap(std::string const name);
 		~NinjaTrap();
 		void	ninjaShoebox(FragTrap &prey);

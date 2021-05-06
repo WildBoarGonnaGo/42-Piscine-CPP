@@ -20,7 +20,7 @@ SuperTrap::SuperTrap(std::string const name)
 	std::cout << "CL4P-TP " << this->_name << " ("
 		<< this->_hitPoints << '/' << this->_maxHitPoints <<
 		" HP " << this->_energyPoints << '/' << this->_maxEnergyPoints
-		<< " EP " << this->_level << " LvL): \"I'm more than Frag or Ninja ... I'm XEL'NAGA!\""
+		<< " EP " << this->_level << " LvL): \"I'm more than a Frag or a Ninja ... I'm XEL'NAGA!\""
 		<< std::endl;
 	return ;
 }

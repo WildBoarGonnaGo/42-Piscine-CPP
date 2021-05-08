@@ -8,8 +8,9 @@
 	 	Footman(void);
 	 	Footman(Footman const &ref);
 	 	Footman(std::string name);
-	 	~Footman(void);
+	 	virtual ~Footman(void);
 
+		Footman			&operator=(Footman const &ref);
 		virtual void	getPolymorphed() const;
  };
 

@@ -5,7 +5,7 @@
 
 class Enemy
 {
-	private:
+	protected:
 		Enemy();
 		std::string const	_type;
 		int					_hp;

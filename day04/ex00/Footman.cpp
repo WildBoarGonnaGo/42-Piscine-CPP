@@ -23,9 +23,15 @@ Footman::~Footman()
 	std::cout << "This can't be!" << std::endl;
 }
 
-void	Footman::getPolymorphed() const
+Footman			&Footman::operator=(Footman const &ref)
 {
-	std::cout << this->_name << " has been turned into a dog! [woof-woof]"
+	this->setName(ref.getName());
+	return (*this);
+}
+
+void			Footman::getPolymorphed() const
+{
+	std::cout << this->getName() << " has been turned into a dog! [woof-woof]"
 		<< std::endl;
 }
 

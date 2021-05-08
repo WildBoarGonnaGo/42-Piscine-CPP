@@ -1,8 +1,7 @@
 #include "Victim.hpp"
 
-Victim::Victim()
+Victim::Victim( ) : _name("Some victim")
 {
-	this->_name = "Murloc";
 	std::cout << "Some random victim called " << this->_name
 		<< " just appeared!" << std::endl;
 	return ;
@@ -37,14 +36,19 @@ void			Victim::getPolymorphed() const
 		<< std::endl;
 }
 
+void			Victim::setName(std::string newName)
+{
+	this->_name = newName;
+}
+
 Victim::~Victim()
 {
-	std::cout << "Victim " << this->_name << " died for no apparent reason"
+	std::cout << "Victim " << this->_name << " just died for no apparent reason!"
 		<< std::endl;
 }
 
 std::ostream	&operator<<(std::ostream &output, Victim const &victim)
 {
-	output << "I'm " << victim.getName() << " and i like otters!" << std::endl;
+	output << "I'm " << victim.getName() << " and I like otters!" << std::endl;
 	return (output);
 }

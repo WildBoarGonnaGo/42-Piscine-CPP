@@ -1,6 +1,6 @@
 #include "Peon.hpp"
 
-Peon::Peon() : Victim("Timmy")
+Peon::Peon( ) : Victim("Timmy")
 {
 	std::cout << "Zog Zog." << std::endl;
 	return ;
@@ -18,6 +18,12 @@ Peon::Peon(Peon const &ref)
 	return ;
 }
 
+Peon	&Peon::operator=(Peon const &ref)
+{
+	this->setName(ref.getName());
+	return (*this);
+}
+
 Peon::~Peon()
 {
 	std::cout << "Bleuark..." << std::endl;
@@ -25,6 +31,6 @@ Peon::~Peon()
 
 void	Peon::getPolymorphed() const
 {
-	std::cout << this->_name << " has been turned into a pink pony!"
+	std::cout << this->getName() << " has been turned into a pink pony!"
 		<< std::endl;
 }

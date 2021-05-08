@@ -6,9 +6,11 @@ class EnclavePatrolman : public Enemy
 {
 	public:
 		EnclavePatrolman();
+		EnclavePatrolman(EnclavePatrolman const &ref);
 		virtual ~EnclavePatrolman();
 
-		virtual void	takeDamage(int hit);
+		EnclavePatrolman	&operator=(EnclavePatrolman const &ref);
+		virtual void		takeDamage(int hit);
 };
 
 #endif

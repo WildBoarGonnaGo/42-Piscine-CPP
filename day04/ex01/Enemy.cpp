@@ -2,7 +2,7 @@
 
 Enemy::Enemy(int hp, std::string const &type) : _type(type), _hp(hp) { }
 
-Enemy::Enemy( ) { }
+Enemy::Enemy( ) : _type("Humanoid"), _hp(50) { }
 
 Enemy::Enemy(Enemy const &ref)
 {

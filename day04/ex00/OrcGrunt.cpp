@@ -23,9 +23,15 @@ OrcGrunt::~OrcGrunt()
 	std::cout << "Aaagh..." << std::endl;
 }
 
+OrcGrunt		&OrcGrunt::operator=(OrcGrunt const &ref)
+{
+	this->setName(ref.getName());
+	return (*this);
+}
+
 void			OrcGrunt::getPolymorphed() const
 {
-	std::cout << this->_name << " has been turned into a wild boar! [Oink! Oink!]"
+	std::cout << this->getName() << " has been turned into a wild boar! [Oink! Oink!]"
 		<< std::endl;
 }
 

@@ -11,7 +11,19 @@ SuperMutant::~SuperMutant()
 	std::cout << "Aaargh..." << std::endl;
 }
 
-void	SuperMutant::takeDamage(int hit)
+SuperMutant::SuperMutant(SuperMutant const &ref)
+{
+	*this = ref;
+	return ;
+}
+
+SuperMutant	&SuperMutant::operator=(SuperMutant const &ref)
+{
+	this->_hp = ref.getHP();
+	return (*this);
+}
+
+void		SuperMutant::takeDamage(int hit)
 {
 	int realHit = hit - 3;
 	Enemy::takeDamage(realHit);

@@ -8,8 +8,9 @@
 	 	OrcGrunt(void);
 	 	OrcGrunt(OrcGrunt const &ref);
 	 	OrcGrunt(std::string name);
-	 	~OrcGrunt(void);
+	 	virtual ~OrcGrunt(void);
 
+		OrcGrunt		&operator=(OrcGrunt const &ref);
 		virtual void	getPolymorphed() const;
  };
 

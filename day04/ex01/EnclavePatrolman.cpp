@@ -12,7 +12,19 @@ EnclavePatrolman::~EnclavePatrolman()
 	std::cout << "Huargh..." << std::endl;
 }
 
-void	EnclavePatrolman::takeDamage(int hit)
+EnclavePatrolman::EnclavePatrolman(EnclavePatrolman const &ref)
+{
+	*this = ref;
+	return ;
+}
+
+EnclavePatrolman	&EnclavePatrolman::operator=(EnclavePatrolman const &ref)
+{
+	this->_hp = ref.getHP();
+	return (*this);
+}
+
+void				EnclavePatrolman::takeDamage(int hit)
 {
 	int realHit = hit - 11;
 	Enemy::takeDamage(realHit);

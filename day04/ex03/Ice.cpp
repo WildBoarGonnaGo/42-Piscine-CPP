@@ -9,6 +9,18 @@ AMateria	*Ice::clone() const
 	return (res);
 }
 
+Ice::Ice(Ice const &ref)
+{
+	*this = ref;
+	return ;
+}
+
+Ice			&Ice::operator=(Ice const &ref)
+{
+	this->setXP(ref.getXP());
+	return (*this);
+}
+
 void		Ice::use(ICharacter &target)
 {
 	std::cout << "* shoots an ice bolt at "

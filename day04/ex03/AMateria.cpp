@@ -3,6 +3,8 @@
 
 AMateria::AMateria(std::string const &type) : _type(type), _xp(0) { }
 
+AMateria::AMateria( ) : _type("none"), _xp(0) { }
+
 AMateria::AMateria(AMateria const &ref)
 {
 	*this = ref;

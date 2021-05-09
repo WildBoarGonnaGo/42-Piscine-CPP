@@ -78,6 +78,10 @@ int main(void)
 	me->attack(centaur);
 	std::cout << *centaur << *me;
 	me->attack(centaur);
+	std::cout << *centaur << *me;
+	me->equip(bozar);
+	std::cout << *me;
+	me->attack(centaur);
 	std::cout << *me;
 	delete pf;
 	delete pr;

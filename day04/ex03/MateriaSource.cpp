@@ -30,6 +30,8 @@ AMateria		*MateriaSource::getSubj(int idx) const
 
 void			MateriaSource::learnMateria(AMateria *sample)
 {
+	if (!sample)
+		return ;
 	for (int i = 0; i < 4; ++i)
 	{
 		if (!this->_subj[i])
@@ -45,7 +47,7 @@ AMateria		*MateriaSource::createMateria(std::string const &type)
 {
 	for (int i = 0; i < 4; ++i)
 	{
-		if (!this->_subj[i]->getType().compare(type))
+		if (this->_subj[i] && !this->_subj[i]->getType().compare(type))
 			return (this->_subj[i]->clone());
 	}
 	return (NULL);

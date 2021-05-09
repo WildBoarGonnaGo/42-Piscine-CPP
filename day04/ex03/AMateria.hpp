@@ -8,9 +8,10 @@ class ICharacter;
 class AMateria
 {
 	private:
-		AMateria();
 		std::string const	_type;
 		unsigned int 		_xp;
+	protected:
+		AMateria();
 	public:
 		AMateria(std::string const &type);
 		AMateria(AMateria const &ref);

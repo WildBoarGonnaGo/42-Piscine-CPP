@@ -1,7 +1,7 @@
 #include "Centaur.hpp"
 #include <iostream>
 
-Centaur::Centaur() : Enemy(170, "Super Mutant")
+Centaur::Centaur() : Enemy(210, "Centaur")
 {
 	std::cout << "* Wooooaaagh... Rrrrgluk *" << std::endl;
 }

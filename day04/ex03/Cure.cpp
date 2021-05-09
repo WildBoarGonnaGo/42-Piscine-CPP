@@ -9,6 +9,18 @@ AMateria	*Cure::clone() const
 	return (res);
 }
 
+Cure::Cure(Cure const &ref)
+{
+	*this = ref;
+	return ;
+}
+
+Cure		&Cure::operator=(Cure const &ref)
+{
+	this->setXP(ref.getXP());
+	return (*this);
+}
+
 void		Cure::use(ICharacter &target)
 {
 	std::cout << "* heals "

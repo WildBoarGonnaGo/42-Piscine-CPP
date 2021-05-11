@@ -3,8 +3,8 @@
 # include <string>
 # include <iostream>
 
-class AForm;
-# include "AForm.hpp"
+class Form;
+# include "Form.hpp"
 
 class Bureaucrat
 {
@@ -24,8 +24,8 @@ class Bureaucrat
 		int					getGrade() const;
 		void				gInc();
 		void				gDec();
-		void				signForm(AForm const &form);
-		void				executeForm(AForm const &form);
+		void				signForm(Form const &form);
+		void				executeForm(Form const &form);
 };
 
 std::ostream	&operator<<(std::ostream &output, Bureaucrat const &ref);

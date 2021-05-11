@@ -92,7 +92,7 @@ void				Bureaucrat::gDec()
 	}
 }
 
-void				Bureaucrat::signForm(AForm const &form)
+void				Bureaucrat::signForm(Form const &form)
 {
 	if (form.getSign())
 		std::cout << this->_name << " signs " << form.getName()
@@ -105,7 +105,7 @@ void				Bureaucrat::signForm(AForm const &form)
 	}
 }
 
-void				Bureaucrat::executeForm(AForm const &form)
+void				Bureaucrat::executeForm(Form const &form)
 {
 	if (!form.execute(*this))
 	{

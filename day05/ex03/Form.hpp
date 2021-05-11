@@ -1,10 +1,10 @@
-#ifndef AFORM_HPP
-# define AFORM_HPP
+#ifndef FORM_HPP
+# define FORM_HPP
 
 class Bureaucrat;
 # include "Bureaucrat.hpp"
 
-class AForm
+class Form
 {
 	private:
 		bool				_sign;
@@ -12,14 +12,14 @@ class AForm
 		int const			_gradeSign;
 		int const			_gradeExec;
 	protected:
-		AForm();
+		Form();
 	public:
-		AForm(std::string const name, int const gradeSign,
+		Form(std::string const name, int const gradeSign,
 			int const gradeExec);
-		AForm(AForm const &ref);
-		virtual ~AForm();
+		Form(Form const &ref);
+		virtual ~Form();
 
-		AForm				&operator=(AForm const &ref);
+		Form				&operator=(Form const &ref);
 		class				GradeTooLowException : public std::exception
 		{
 			public:
@@ -42,6 +42,6 @@ class AForm
 		virtual bool		execute(Bureaucrat const &executor) const = 0;
 };
 
-std::ostream	&operator<<(std::ostream &output, AForm const &ref);
+std::ostream	&operator<<(std::ostream &output, Form const &ref);
 
 #endif

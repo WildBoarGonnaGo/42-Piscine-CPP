@@ -1,8 +1,8 @@
 #ifndef SHRUBBERYCREATIONFROM_HPP
 # define SHRUBBERYCREATIONFROM_HPP
-# include "AForm.hpp"
+# include "Form.hpp"
 
-class ShrubberyCreationForm : public AForm
+class ShrubberyCreationForm : public Form
 {
 	private:
 		ShrubberyCreationForm();

@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target) :
-	AForm("shrubbery creation", 145, 137), _target(target) { }
+	Form("shrubbery creation", 145, 137), _target(target) { }
 
 ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm
 	const &ref)
@@ -34,9 +34,9 @@ bool					ShrubberyCreationForm::execute(
 	{
 		if (executor.getGrade() > this->getGradeExec() ||
 			this->getGradeSign() > 150 || this->getGradeExec() > 150)
-			throw ShrubberyCreationForm::AForm::GradeTooLowException();
+			throw ShrubberyCreationForm::Form::GradeTooLowException();
 		if (this->getGradeSign() < 1 || this->getGradeExec() < 1)
-			throw ShrubberyCreationForm::AForm::GradeTooHighException();
+			throw ShrubberyCreationForm::Form::GradeTooHighException();
 		fileName.append(this->_target);
 		fileName.append("_shrubbery");
 		std::ofstream	ofs(fileName.c_str());

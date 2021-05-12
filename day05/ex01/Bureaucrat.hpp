@@ -24,7 +24,7 @@ class Bureaucrat
 		int					getGrade() const;
 		void				gInc();
 		void				gDec();
-		void				signForm(Form &ref);
+		void				signForm(Form const &ref);
 };
 
 std::ostream	&operator<<(std::ostream &output, Bureaucrat const &ref);

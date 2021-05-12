@@ -13,8 +13,8 @@ class Form
 		int const			_gradeSign;
 		int const			_gradeExec;
 	public:
-		Form(std::string const name, int const gradeSign,
-			int const gradeExec);
+		Form(std::string const &name, int const &gradeSign,
+			int const &gradeExec);
 		Form(Form const &ref);
 		~Form();
 

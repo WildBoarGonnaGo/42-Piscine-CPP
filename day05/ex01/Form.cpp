@@ -19,7 +19,7 @@ class Form::GradeTooHighException : public std::exception
 Form::Form( ) : _sign(false), _name("Noname"), _gradeSign(1),
 	_gradeExec(1) { }
 
-Form::Form(std::string const name, int const gradeSign, int const gradeExec) :
+Form::Form(std::string const &name, int const &gradeSign, int const &gradeExec) :
 	_sign(false), _name(name), _gradeSign(gradeSign), _gradeExec(gradeExec)
 {
 	try
@@ -81,12 +81,11 @@ void				Form::beSigned(Bureaucrat &ref)
 {
 	try
 	{
-		if (this->_gradeSign > 150 || this->_gradeExec > 150)
+		if (this->_gradeSign > 150 || this->_gradeExec > 150
+			|| ref.getGrade() > this->_gradeSign)
 			throw Form::GradeTooLowException();
 		else if (this->_gradeSign < 1 || this->_gradeExec < 1)
 			throw Form::GradeTooHighException();
-		else if (ref.getGrade() > this->_gradeSign)
-			throw Form::GradeTooLowException();
 		this->_sign = true;
 		ref.signForm(*this);
 	}
@@ -94,21 +93,21 @@ void				Form::beSigned(Bureaucrat &ref)
 	{
 		if (this->_gradeSign < 1 || this->_gradeSign > 150)
 		{
-			std::cout << "Form " << this->_name
-				<< " beSigned() method error: sign " << e.what()
+			std::cerr << "Form " << this->_name
+				<< ": sign aborted: sign " << e.what()
 				<< std::endl;
 			return ;
 		}
 		else if (this->_gradeExec > 150 || this->_gradeExec < 1)
 		{
-			std::cout << "Form " << this->_name
-				<< " beSigned() method error: sign " << e.what()
+			std::cerr << "Form " << this->_name
+				<< ": sign aborted: execution " << e.what()
 				<< std::endl;
 			return ;
 		}
 		ref.signForm(*this);
-		std::cout << ref.getName() << "'s "
-			<< e.what() << std::endl;
+		std::cerr << ref.getName() << " can't sign Form "
+			<< this->_name << ": " << e.what() << std::endl;
 	}
 }
 
@@ -132,21 +131,13 @@ std::ostream	&operator<<(std::ostream &output, Form const &ref)
 	}
 	catch (std::exception &e)
 	{
-		if (ref.getGradeExec() > 150)
-			output << "Form " << ref.getName()
-				<< " output error: execution " << e.what()
+		if (ref.getGradeExec() > 150 || ref.getGradeExec() < 1)
+			std::cerr << "Form " << ref.getName()
+				<< ": output aborted: execution " << e.what()
 				<< std::endl;
-		else if (ref.getGradeSign() > 150)
-			output << "Form " << ref.getName()
-				<< " output error: sign " << e.what()
-				<< std::endl;
-		else if (ref.getGradeExec() < 1)
-			output << "Form " << ref.getName()
-				<< " output error: execution " << e.what()
-				<< std::endl;
-		else if (ref.getGradeSign() < 1)
-			output << "Form " << ref.getName()
-				<< " output error: sign " << e.what()
+		else if (ref.getGradeSign() > 150 || ref.getGradeSign() < 1)
+			std::cerr << "Form " << ref.getName()
+				<< ": output aborted: sign " << e.what()
 				<< std::endl;
 	}
 	return (output);

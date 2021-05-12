@@ -33,7 +33,7 @@ Bureaucrat::Bureaucrat(std::string const &name, int grade) : _name(name)
 	catch (std::exception &e)
 	{
 		std::cerr << this->_name << " has " << e.what()
-			<< std::endl;
+			<< ". Let's fix it to 150." << std::endl;
 		this->_grade = 150;
 	}
 }
@@ -70,8 +70,8 @@ void				Bureaucrat::gInc()
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << this->_name << " has " << e.what()
-			<< std::endl;
+		std::cerr << this->_name << " can't be inceremented: " 
+			<< e.what() << std::endl;
 		this->_grade = 1;
 	}
 }
@@ -86,8 +86,8 @@ void				Bureaucrat::gDec()
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << this->_name << " has " << e.what()
-			<< std::endl;
+		std::cerr << this->_name << " can't be decremented: " 
+			<< e.what() << std::endl;
 		this->_grade = 150;
 	}
 }
@@ -100,7 +100,7 @@ Bureaucrat::~Bureaucrat( )
 
 std::ostream	&operator<<(std::ostream &output, Bureaucrat const &ref)
 {
-	output << ref.getName() << ", bureaucrat has grade " << ref.getGrade()
+	output << ref.getName() << ", bureaucrat, has grade " << ref.getGrade()
 		<< std::endl;
 	return (output);
 }

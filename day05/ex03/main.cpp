@@ -2,35 +2,39 @@
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "Bureaucrat.hpp"
+#include "Intern.hpp"
 #include <cstdlib>
 #include <ctime>
 
 int main(void)
 {
 	srand(time(NULL));
-	Bureaucrat thomas("Thomas", 5);
-	Bureaucrat david("David", 150);
-	Bureaucrat cheater("Cheater", -2);
+
+	Intern		someRandomIntern;
+	Form		*rrf;
+	Bureaucrat	donald("Donald Trump", 1);
+
+	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+	donald.executeForm(*rrf);
+	rrf->beSigned(donald);
+	donald.executeForm(*rrf);
+	delete rrf;
 	std::cout << std::endl;
 
-	ShrubberyCreationForm	monka("Monka");
-	RobotomyRequestForm		pepe("Pepe");
-	ShrubberyCreationForm	failure("Failure");
-	PresidentialPardonForm	trump("Donald Trump");
+	rrf = someRandomIntern.makeForm("ShrubberyCreationForm", "Bush_Junior");
+	rrf->beSigned(donald);
+	donald.executeForm(*rrf);
+	delete rrf;
 	std::cout << std::endl;
 
-	thomas.executeForm(monka);
-	thomas.executeForm(pepe);
-	thomas.executeForm(trump);
+	rrf = someRandomIntern.makeForm("presidential pardon", donald.getName());
+	rrf->beSigned(donald);
+	donald.executeForm(*rrf);
+	delete rrf;
 	std::cout << std::endl;
 
-	david.executeForm(failure);
-	david.executeForm(pepe);
-	david.executeForm(trump);
-	std::cout << std::endl;
+	rrf = someRandomIntern.makeForm("Monka's revenge", donald.getName());
+	delete rrf;
 
-	cheater.executeForm(failure);
-	cheater.executeForm(pepe);
-	cheater.executeForm(trump);
-	std::cout << std::endl;
+	return (0);
 }

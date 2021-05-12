@@ -109,9 +109,9 @@ void				Bureaucrat::executeForm(Form const &form)
 {
 	if (!form.execute(*this))
 	{
-		std::cerr << this->_name << " cannot execute Form" 
+		std::cerr << this->_name << " cannot execute Form " 
 			<< form.getName() << ", because " << this->_name << std::endl
-			<< "is not authorized or just failed execution!" << std::endl;
+			<< "is not authorized!" << std::endl;
 	}
 	else
 	{

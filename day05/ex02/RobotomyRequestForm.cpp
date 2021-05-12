@@ -32,36 +32,33 @@ bool				RobotomyRequestForm::execute(
 	int success;
 	try
 	{
+		if (!this->getSign())
+			throw RobotomyRequestForm::Form::FormIsNotSigned();
 		if (executor.getGrade() > this->getGradeExec() ||
 			this->getGradeSign() > 150 || this->getGradeExec() > 150)
 			throw RobotomyRequestForm::Form::GradeTooLowException();
 		if (this->getGradeSign() < 1 || this->getGradeExec() < 1)
 			throw RobotomyRequestForm::Form::GradeTooHighException();
 		success = rand() % 2;
-		if (!success)
-			throw success;
-		std::cout << this->_target << " has been "
-			<< "successfully robotomized!" << std::endl;
+		if (success)
+			std::cout << this->_target << " has been "
+				<< "successfully robotomized!" << std::endl;
+		else
+			std::cout << "Robotomization of " << this->_target
+				<< " failed!" << std::endl;
 		return (true);
 	}
 	catch (std::exception &e)
 	{
 		if (this->getGradeSign() > 150 || this->getGradeSign() < 1)
-		{
 			std::cerr << "execution of Form " << this->getName()
 				<< " was aborted: Form sign " << e.what() << std::endl;
-		}
 		else if (this->getGradeExec() > 150 || this->getGradeExec() < 1)
-		{
 			std::cerr << "execution of Form " << this->getName()
 				<< " was aborted: Form execution " << e.what() << std::endl;
-		}
-		return (false);
-	}
-	catch(int &e)
-	{
-		std::cerr << "Robotomization of " << this->_target
-			<< " has failed!" << std::endl;
+		else
+			std::cerr << "execution of Form " << this->getName()
+				<< " was aborted: " << e.what() << std::endl;
 		return (false);
 	}
 }

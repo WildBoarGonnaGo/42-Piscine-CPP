@@ -28,6 +28,8 @@ bool					PresidentialPardonForm::execute(
 {
 	try
 	{
+		if (!this->getSign())
+			throw PresidentialPardonForm::Form::FormIsNotSigned();
 		if (executor.getGrade() > this->getGradeExec() ||
 			this->getGradeSign() > 150 || this->getGradeExec() > 150)
 			throw PresidentialPardonForm::Form::GradeTooLowException();
@@ -39,16 +41,16 @@ bool					PresidentialPardonForm::execute(
 	}
 	catch (std::exception &e)
 	{
+		
 		if (this->getGradeSign() > 150 || this->getGradeSign() < 1)
-		{
 			std::cerr << "execution of Form " << this->getName()
 				<< " was aborted: Form sign " << e.what() << std::endl;
-		}
 		else if (this->getGradeExec() > 150 || this->getGradeExec() < 1)
-		{
 			std::cerr << "execution of Form " << this->getName()
 				<< " was aborted: Form execution " << e.what() << std::endl;
-		}
+		else
+			std::cerr << "execution of Form " << this->getName()
+				<< " was aborted: " << e.what() << std::endl;
 		return (false);
 	}
 }

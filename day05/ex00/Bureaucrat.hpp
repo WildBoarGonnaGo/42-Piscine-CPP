@@ -13,7 +13,6 @@ class Bureaucrat
 		Bureaucrat(std::string const &name, int grade);
 		Bureaucrat(Bureaucrat const &ref);
 		~Bureaucrat();
-
 		
 		class GradeTooHighException;
 		class GradeTooLowException;

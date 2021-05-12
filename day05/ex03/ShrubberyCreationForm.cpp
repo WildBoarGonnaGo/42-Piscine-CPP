@@ -32,6 +32,8 @@ bool					ShrubberyCreationForm::execute(
 	std::string	fileName = "";
 	try
 	{
+		if (!this->getSign())
+			throw ShrubberyCreationForm::Form::FormIsNotSigned();
 		if (executor.getGrade() > this->getGradeExec() ||
 			this->getGradeSign() > 150 || this->getGradeExec() > 150)
 			throw ShrubberyCreationForm::Form::GradeTooLowException();
@@ -64,18 +66,20 @@ bool					ShrubberyCreationForm::execute(
 	catch (std::exception &e)
 	{
 		if (this->getGradeSign() > 150 || this->getGradeSign() < 1)
-		{
 			std::cerr << "execution of Form " << this->getName()
 				<< " was aborted: Form sign " << e.what() << std::endl;
-		}
 		else if (this->getGradeExec() > 150 || this->getGradeExec() < 1)
-		{
 			std::cerr << "execution of Form " << this->getName()
 				<< " was aborted: Form execution " << e.what() << std::endl;
-		}
-		else
+		else if (!this->getSign()) 
+			std::cerr << "execution of Form " << this->getName()
+				<< " was aborted: " << e.what() << std::endl;
+		else if (executor.getGrade() < this->getGradeExec())
 			std::cerr << this->_target <<"_shrubbery file creation failed: "
 				<< e.what() << std::endl;
+		else
+			std::cerr << "execution of Form " << this->getName()
+				<< " was aborted: " << e.what() << std::endl;
 		return (false); 
 	}
 }

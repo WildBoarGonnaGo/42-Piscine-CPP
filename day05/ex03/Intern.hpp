@@ -20,7 +20,7 @@ class Intern
 		class					NoFormPatternException : public std::exception
 		{
 			virtual const char *what() const throw() {
-				return ("There is no such Form pattern");
+				return ("There is no such Form");
 			}
 		};
 		typedef Form			*(Intern::*func)(std::string

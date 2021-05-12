@@ -52,9 +52,10 @@ Form					*Intern::makeForm(std::string const &name,
 		}
 		throw Intern::NoFormPatternException();
 	}
-	catch (Intern::NoFormPatternException &e)
+	catch (std::exception &e)
 	{
-		std::cout << &e << std::endl;
+		std::cout << e.what() << " (" <<
+			name << ')' << std::endl;
 		return (NULL);
 	}
 }

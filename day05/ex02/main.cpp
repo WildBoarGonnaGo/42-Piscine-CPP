@@ -7,7 +7,7 @@
 
 int main(void)
 {
-	srand(time(NULL));
+		srand(time(NULL));
 	Bureaucrat thomas("Thomas", 5);
 	Bureaucrat david("David", 150);
 	Bureaucrat cheater("Cheater", -2);
@@ -32,5 +32,27 @@ int main(void)
 	cheater.executeForm(failure);
 	cheater.executeForm(pepe);
 	cheater.executeForm(trump);
+	std::cout << std::endl;
+
+	monka.beSigned(cheater);
+	pepe.beSigned(cheater);
+	failure.beSigned(cheater);
+	trump.beSigned(cheater);
+	std::cout << std::endl;
+
+	thomas.executeForm(monka);
+	thomas.executeForm(pepe);
+	thomas.executeForm(trump);
+	std::cout << std::endl;
+
+	monka.beSigned(thomas);
+	pepe.beSigned(thomas);
+	failure.beSigned(thomas);
+	trump.beSigned(thomas);
+	std::cout << std::endl;
+
+	thomas.executeForm(monka);
+	thomas.executeForm(pepe);
+	thomas.executeForm(trump);
 	std::cout << std::endl;
 }

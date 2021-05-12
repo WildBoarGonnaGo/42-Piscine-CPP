@@ -3,7 +3,7 @@
 Form::Form( ) : _sign(false), _name("Noname"), _gradeSign(1),
 	_gradeExec(1) { }
 
-Form::Form(std::string const name, int const gradeSign, int const gradeExec) :
+Form::Form(std::string const &name, int const &gradeSign, int const &gradeExec) :
 	_sign(false), _name(name), _gradeSign(gradeSign), _gradeExec(gradeExec)
 {
 	try
@@ -76,23 +76,23 @@ void				Form::beSigned(Bureaucrat &ref)
 	}
 	catch (std::exception &e)
 	{
-		ref.signForm(*this);
 		if (this->_gradeSign < 1 || this->_gradeSign > 150)
 		{
 			std::cerr << "Form " << this->_name
-				<< " beSigned() method error: sign " << e.what()
+				<< ": sign aborted: sign " << e.what()
 				<< std::endl;
 			return ;
 		}
 		else if (this->_gradeExec > 150 || this->_gradeExec < 1)
 		{
 			std::cerr << "Form " << this->_name
-				<< " beSigned() method error: sign " << e.what()
+				<< ": sign aborted: execution " << e.what()
 				<< std::endl;
 			return ;
 		}
-		std::cerr << ref.getName() << "'s "
-			<< e.what() << std::endl;
+		ref.signForm(*this);
+		std::cerr << ref.getName() << " can't sign Form "
+			<< this->_name << ": " << e.what() << std::endl;
 	}
 }
 
@@ -116,21 +116,13 @@ std::ostream	&operator<<(std::ostream &output, Form const &ref)
 	}
 	catch (std::exception &e)
 	{
-		if (ref.getGradeExec() > 150)
+		if (ref.getGradeExec() > 150 || ref.getGradeExec() < 1)
 			std::cerr << "Form " << ref.getName()
-				<< " output error: execution " << e.what()
+				<< ": output aborted: execution " << e.what()
 				<< std::endl;
-		else if (ref.getGradeSign() > 150)
+		else if (ref.getGradeSign() > 150 || ref.getGradeSign() < 1)
 			std::cerr << "Form " << ref.getName()
-				<< " output error: sign " << e.what()
-				<< std::endl;
-		else if (ref.getGradeExec() < 1)
-			std::cerr << "Form " << ref.getName()
-				<< " output error: execution " << e.what()
-				<< std::endl;
-		else if (ref.getGradeSign() < 1)
-			std::cerr << "Form " << ref.getName()
-				<< " output error: sign " << e.what()
+				<< ": output aborted: sign " << e.what()
 				<< std::endl;
 	}
 	return (output);

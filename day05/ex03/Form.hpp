@@ -14,8 +14,8 @@ class Form
 	protected:
 		Form();
 	public:
-		Form(std::string const name, int const gradeSign,
-			int const gradeExec);
+		Form(std::string const &name, int const &gradeSign,
+			int const &gradeExec);
 		Form(Form const &ref);
 		virtual ~Form();
 

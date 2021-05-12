@@ -3,7 +3,7 @@
 #include <ctime>
 
 RobotomyRequestForm::RobotomyRequestForm(std::string const &target) :
-	AForm("robotomy request", 72, 45), _target(target) { }
+	Form("robotomy request", 72, 45), _target(target) { }
 
 RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm
 	const &ref)
@@ -34,9 +34,9 @@ bool				RobotomyRequestForm::execute(
 	{
 		if (executor.getGrade() > this->getGradeExec() ||
 			this->getGradeSign() > 150 || this->getGradeExec() > 150)
-			throw RobotomyRequestForm::AForm::GradeTooLowException();
+			throw RobotomyRequestForm::Form::GradeTooLowException();
 		if (this->getGradeSign() < 1 || this->getGradeExec() < 1)
-			throw RobotomyRequestForm::AForm::GradeTooHighException();
+			throw RobotomyRequestForm::Form::GradeTooHighException();
 		success = rand() % 2;
 		if (!success)
 			throw success;

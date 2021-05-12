@@ -70,8 +70,8 @@ void				Bureaucrat::gInc()
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << this->_name << " has " << e.what()
-			<< std::endl;
+		std::cerr << this->_name << " can't be inceremented: " 
+			<< e.what() << std::endl;
 		this->_grade = 1;
 	}
 }
@@ -86,13 +86,13 @@ void				Bureaucrat::gDec()
 	}
 	catch (std::exception &e)
 	{
-		std::cerr << this->_name << " has " << e.what()
-			<< std::endl;
+		std::cerr << this->_name << " can't be decremented: " 
+			<< e.what() << std::endl;
 		this->_grade = 150;
 	}
 }
 
-void				Bureaucrat::signForm(AForm const &form)
+void				Bureaucrat::signForm(Form const &form)
 {
 	if (form.getSign())
 		std::cout << this->_name << " signs " << form.getName()
@@ -105,7 +105,7 @@ void				Bureaucrat::signForm(AForm const &form)
 	}
 }
 
-void				Bureaucrat::executeForm(AForm const &form)
+void				Bureaucrat::executeForm(Form const &form)
 {
 	if (!form.execute(*this))
 	{

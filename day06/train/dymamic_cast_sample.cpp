@@ -50,7 +50,7 @@ int main(void)
 		Child2	&e = dynamic_cast<Child2 &>(*b);
 		std::cout << "e: Dynamic conversion is OK!" << std::endl;
 	}
-	catch (std::bad_cast &e)
+	catch (std::exception &e)
 	{
 		std::cout << "e: Dynamic cast has FAILED: " << e.what()
 			<< std::endl;

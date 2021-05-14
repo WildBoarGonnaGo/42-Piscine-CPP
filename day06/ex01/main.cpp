@@ -15,5 +15,8 @@ int main(void)
 	std::cout << "midInt = " << result->midInt << std::endl;
 	std::cout << "finStr = " << result->finStr << std::endl;
 
+	delete reinterpret_cast<char *>(rawSample);
+	delete result;
+
 	return (0);
 }

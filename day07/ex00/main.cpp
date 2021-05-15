@@ -44,7 +44,7 @@ int main(void)
 	Awesome		e(4);
 	Awesome		f(2);
 	::swap(e, f);
-	std::cout << "e.getN() = " << e << ", f.getN() = " << f << std::endl;
+	std::cout << "e = " << e << ", f = " << f << std::endl;
 	std::cout << "min( e, f ) = " << ::min(e, f) << std::endl;
 	std::cout << "max( e, f ) = " << ::max(e, f) << std::endl;
 	return (0);

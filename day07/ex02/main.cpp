@@ -21,7 +21,20 @@ int main(void)
 	Array<int>			b(5);
 	Array<float> 		c(7);
 	Array<float> 		d(9);
+	const Array<int>	h(2);
 
+	for (int i = 0; i < h.size(); ++i)
+	{
+		try
+		{
+			std::cout << "h[" << i << "] const = " << h[i]
+				<< std::endl ;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}	
+	}
 	for (int i = 0; i < 5; ++i)
 		std::cout << "b[" << i << "] = " << b[i]
 			<< std::endl;
@@ -32,6 +45,7 @@ int main(void)
 			b[i] = i * 2;
 			c[i] = i * 0.75;
 			d[i] = i * 1.5;
+	
 		}
 		catch (std::exception &e)
 		{

@@ -8,9 +8,9 @@ class Array {
 	public:
 		Array() : _size(0), _arr(new T[0]()) { }
 		Array<T>(unsigned int n) : _size(n), _arr(new T[_size]() ) { }
-		Array<T>(Array const &rhs) { 
-			*this = rhs;
-			return ;
+		Array<T>(Array const &rhs) {
+			if (this != &rhs)
+				*this = rhs;
 		}
 
 		Array<T>		&operator=(Array const &rhs) {
@@ -38,11 +38,18 @@ class Array {
 				}
 		};
 
-		T				&operator[](int i) const {
+		T				&operator[](int i) {
 			if (!this->_arr || i < 0 || i >= this->_size)
 				throw MemoryReadFailedException();
 			return (this->_arr[i]);
 		}
+
+		const T			&operator[](int i) const {
+			if (!this->_arr || i < 0 || i >= this->_size)
+				throw MemoryReadFailedException();
+			return (this->_arr[i]);
+		}
+
 
 		int				size() const {
 			return (this->_size);

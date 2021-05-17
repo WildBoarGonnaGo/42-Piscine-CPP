@@ -1,4 +1,10 @@
 #include "easyfind.hpp"
+#include <iostream>
+
+const char	*ReturnIntException::what() const throw()
+{
+	return ("find value failure: there is no such element");
+}
 
 int main(void)
 {

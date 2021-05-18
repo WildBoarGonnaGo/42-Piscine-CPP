@@ -11,8 +11,8 @@ int main(void)
 	std::list<int>				wildList;
 	std::vector<int>			wildVector;
 
-	std::list<int>::iterator		it;
-	std::vector<int>::iterator		it2;
+	std::list<int>::const_iterator		it;
+	std::vector<int>::const_iterator		it2;
 
 	wildVector.push_back(-2);
 	wildVector.push_back(10);

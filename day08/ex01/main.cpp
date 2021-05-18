@@ -84,6 +84,34 @@ int main(void)
 	{
 		std::cerr << e.what() << '\n';
 	}
+	Span				oneNum(1);
+
+	oneNum.addNumber(1);
+	try
+	{
+		std::cout << oneNum.longestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	
+	Span				zeroNum(0);
+	try
+	{
+		zeroNum.addNumber(2);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		std::cout << zeroNum.shortestSpan() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	return (0);
 }

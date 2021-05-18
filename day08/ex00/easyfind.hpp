@@ -2,8 +2,6 @@
 # define EASYFIND_HPP
 # include <vector>
 # include <list>
-# include <deque>
-# include <set>
 # include <iterator>
 # include <iostream>
 # include <algorithm>

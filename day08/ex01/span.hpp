@@ -8,17 +8,13 @@ typedef unsigned int	uint32;
 class ContainerOverflowException : public std::exception
 {
 	public:
-		const char	*what() const throw() {
-			return ("number can't be added: container overflow");
-		}
+		const char	*what() const throw();
 };
 
 class ContainerSpanFindException : public std::exception
 {
 	public:
-		const char	*what() const throw() {
-			return ("span seek failure: insufficient data");
-		}
+		const char	*what() const throw(); 
 };
 
 class Span
@@ -38,7 +34,6 @@ class Span
 		int						shortestSpan();
 		int						longestSpan();
 	private:
-		std::vector<int>::iterator	_itAdd;
 		Span();
 		std::vector<int>			_range;
 		uint32						_N;

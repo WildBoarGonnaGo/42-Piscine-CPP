@@ -42,17 +42,23 @@ void				Span::addNumber(int num)
 
 int					Span::shortestSpan() 
 {
-	std::vector<int>			temp(this->_range);
+	std::vector<int>					temp(this->_range);
+	std::vector<int>::const_iterator	it;
 
 	if (temp.size() <= 1)
 		throw ContainerSpanFindException();
 	std::sort(temp.begin(), temp.end());
+	for (it = temp.begin(); it != temp.end(); ++it)
+	{
+		if (*it == *(it + 1))
+			return (0);
+	}
 	return (temp[1] - temp[0]);
 }
 
 int					Span::longestSpan()
 {
-	std::vector<int>			temp(this->_range);
+	std::vector<int>					temp(this->_range);
 
 	if (temp.size() <= 1)
 		throw ContainerSpanFindException();

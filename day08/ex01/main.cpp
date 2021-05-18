@@ -16,27 +16,11 @@ int main(void)
 	std::vector<int>	konoDioDa(5, rand() % 43);
 	int					nyacat [5];
 
-	sp.addNumber(5);
-	sp.addNumber(3);
-	sp.addNumber(17);
-	sp.addNumber(9);
-	sp.addNumber(11);
-	try
-	{
-		sp.addNumber(21);
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	
-	std::cout << sp.shortestSpan() << std::endl;
-	std::cout << sp.longestSpan() << std::endl << std::endl;
 	for (int i = 0; i < 11001; ++i)
 	{
 		try
 		{
-			bigNums.addNumber(rand() % 20001);
+			bigNums.addNumber(rand() % 20000);
 			std::cout << bigNums.getRange()[i];
 			(((i + 1) % 10)) ? std::cout << ' ' : std::cout << std::endl; 
 		}
@@ -113,5 +97,22 @@ int main(void)
 	{
 		std::cerr << e.what() << '\n';
 	}
+
+	sp.addNumber(5);
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+	try
+	{
+		sp.addNumber(21);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+	std::cout << sp.shortestSpan() << std::endl;
+	std::cout << sp.longestSpan() << std::endl;
 	return (0);
 }

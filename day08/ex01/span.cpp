@@ -1,5 +1,6 @@
 #include "span.hpp"
 #include <iostream>
+#include <climits>
 
 const char	*ContainerOverflowException::what() const throw()
 {
@@ -44,16 +45,17 @@ int					Span::shortestSpan()
 {
 	std::vector<int>					temp(this->_range);
 	std::vector<int>::const_iterator	it;
+	int					min = INT_MAX;
 
 	if (temp.size() <= 1)
 		throw ContainerSpanFindException();
 	std::sort(temp.begin(), temp.end());
 	for (it = temp.begin(); it != temp.end(); ++it)
 	{
-		if (*it == *(it + 1))
-			return (0);
+		if (min > *(it + 1) - *it)
+			min = *(it + 1) - *it;
 	}
-	return (temp[1] - temp[0]);
+	return (min);
 }
 
 int					Span::longestSpan()

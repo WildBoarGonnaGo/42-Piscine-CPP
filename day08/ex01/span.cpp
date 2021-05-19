@@ -44,19 +44,13 @@ void				Span::addNumber(int num)
 int					Span::shortestSpan() 
 {
 	std::vector<int>					temp(this->_range);
-	std::vector<int>::const_iterator	it;
-	std::vector<int>::const_iterator	itPrev;
 	int					min = INT_MAX;
 
 	if (temp.size() <= 1)
 		throw ContainerSpanFindException();
 	std::sort(temp.begin(), temp.end());
-	for (it = temp.begin(); it != temp.end(); )
-	{
-		itPrev = it;
-		++it;
-		min = std::min(min, *it - *itPrev)
-	}
+	for (std::vector<int>::const_iterator it = temp.begin(); (it + 1) != term.end(); ++it)
+		min = std::min(min, *(it + 1) - *it);
 	return (min);
 }
 
